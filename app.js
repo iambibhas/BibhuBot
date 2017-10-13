@@ -26,7 +26,7 @@ function get_last_video() {
 
         // ctime = creation time is used
         // replace with mtime for modification time
-        return fs.statSync(fullpath).ctime;
+        return fs.statSync(fullpath).mtime;
     }));
 }
 
