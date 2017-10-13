@@ -13,7 +13,7 @@ function get_last_video() {
 
     var files = fs.readdirSync(vidPath);
     files = files.filter(function (val) {
-        return val.indexOf('avi') > -1;
+        return val.indexOf('mp4') > -1;
     })
     if (files.length === 0) {
         return '';
@@ -21,13 +21,13 @@ function get_last_video() {
     console.log(files);
 
     // use underscore for max()
-    return _.max(files, function (f) {
+    return path.join(vidPath, _.max(files, function (f) {
         var fullpath = path.join(vidPath, f);
 
         // ctime = creation time is used
         // replace with mtime for modification time
         return fs.statSync(fullpath).ctime;
-    });
+    }));
 }
 
 var send_message = function(bot, message, text) {
@@ -60,6 +60,7 @@ var send_photo = function(bot, message, file_location) {
 
 var send_video = function(bot, message, file_location) {
     // sends a photo, with the chat action "Sending photo >>>"
+    console.log(file_location);
     bot.sendChatAction({
         chat_id: message.chat.id,
         action: 'upload_video'
@@ -69,7 +70,7 @@ var send_video = function(bot, message, file_location) {
         chat_id: message.chat.id,
         reply_to_message_id: message.message_id,
         files: {
-            video: file_location
+            stream: fs.createReadStream(file_location)
         }
     }, function (err, msg) {
         console.log("error:", err);
