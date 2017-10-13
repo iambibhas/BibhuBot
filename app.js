@@ -12,16 +12,17 @@ function get_last_video() {
     }
 
     var files = fs.readdirSync(vidPath);
-    files.filter(function (val) {
+    files = files.filter(function (val) {
         return val.indexOf('avi') > -1;
     })
     if (files.length === 0) {
         return '';
     }
+    console.log(files);
 
     // use underscore for max()
     return _.max(files, function (f) {
-        var fullpath = path.join(dir, f);
+        var fullpath = path.join(vidPath, f);
 
         // ctime = creation time is used
         // replace with mtime for modification time
