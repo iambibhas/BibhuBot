@@ -1,0 +1,28 @@
+{
+  "name": "BibhuBot",
+  "version": "1.0.0",
+  "description": "A Telegram bot for home stuff",
+  "main": "app.js",
+  "dependencies": {
+    "node-telegram-bot": "^0.1.9",
+    "underscore": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "BOT_TOKEN='Your Token' node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iambibhas/BibhuBot.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot"
+  ],
+  "author": "Bibhas D",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iambibhas/BibhuBot/issues"
+  },
+  "homepage": "https://github.com/iambibhas/BibhuBot#readme"
+}
