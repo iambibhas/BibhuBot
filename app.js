@@ -13,7 +13,7 @@ function get_last_video() {
 
     var files = fs.readdirSync(vidPath);
     files = files.filter(function (val) {
-        return val.indexOf('mp4') > -1;
+        return val.indexOf('avi') > -1 && val.indexOf('timelapse') === -1;
     })
     if (files.length === 0) {
         return '';
